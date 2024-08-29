@@ -49,7 +49,6 @@ export class Store implements IStore {
   defaultPolicy: Permission = "rw";
   _permissions: Record<string, Permission> = {};
 
-
   constructor() {
     //??? 
     Object.assign(this._permissions, Object.getPrototypeOf(this)._permissions);
@@ -59,9 +58,6 @@ export class Store implements IStore {
 
   checkPermission(key: string, permissionType: Permission): boolean {
     const keyParts = key.split('.');
-
-
-
     for (let i = keyParts.length; i > 0; i--) {
       const partialKey = keyParts.slice(0, i).join('.');
 
@@ -70,7 +66,6 @@ export class Store implements IStore {
         return this._permissions[partialKey].includes(permissionType);
       }
     }
-
     return this.defaultPolicy.includes(permissionType);
   }
 
@@ -83,7 +78,6 @@ export class Store implements IStore {
   }
 
   read(path: string): StoreResult {
-
     // const dotPath = path.replace(/:/g, '.');
     // if (this.allowedToRead(dotPath)) {
 
@@ -142,12 +136,7 @@ export class Store implements IStore {
   }
 
   entries(): JSONObject {
-
-
     const result_: JSONObject = {};
-
-
-
     const processEntry = (current: any, currentPath: string = '', result: any = result_) => {
         for (const key of Object.keys(current)) {
             if (key === '_permissions' || key === 'defaultPolicy') {
