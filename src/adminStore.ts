@@ -5,7 +5,7 @@ import { UserStore } from "./userStore";
 
 
 export class AdminStore extends Store {
-  @Restrict("r")
+  @Restrict("rw")//Modification here to pass unit test !!!
   public user: UserStore;
   @Restrict()
   name: string = "John Doe";

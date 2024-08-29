@@ -2,7 +2,7 @@ import { Restrict, Store } from "./store";
 
 export class UserStore extends Store {
   @Restrict("rw")
-  name: string = "John Doe";
+  public name: string = "John Doe";
 
   constructor() {
     super();
